@@ -3,7 +3,7 @@ chcp 65001 >nul
 setlocal
 cd /d "%~dp0"
 if "%~1"=="" (
-  echo PDF banka ekstresini bu dosyanin uzerine surukleyip birak.
+  echo Banka ekstresini ya da tablolu bir PDF'i bu dosyanin uzerine surukleyip birak.
   echo Excel dosyasi PDF'in yanina kaydedilir ve acilir.
   pause
   exit /b
@@ -24,8 +24,7 @@ if not exist ".venv\Scripts\python.exe" (
   ".venv\Scripts\python.exe" -m pip install -q --disable-pip-version-check -r requirements.txt || goto :hata
 )
 for %%F in (%*) do (
-  ".venv\Scripts\python.exe" ekstre_cevir.py "%%~fF"
-  if exist "%%~dpnF_ekstre.xlsx" start "" "%%~dpnF_ekstre.xlsx"
+  for /f "usebackq delims=" %%X in (`".venv\Scripts\python.exe" ekstre_cevir.py --yol "%%~fF"`) do start "" "%%X"
 )
 pause
 exit /b

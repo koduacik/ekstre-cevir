@@ -1,5 +1,5 @@
 on run
-	display dialog "PDF banka ekstresini bu simgenin üzerine sürükleyip bırak." & return & return & "Excel dosyası PDF'in yanına kaydedilir ve açılır." buttons {"Tamam"} default button 1 with title "Ekstre Çevir" with icon note
+	display dialog "Banka ekstresini ya da tablolu bir PDF'i bu simgenin üzerine sürükleyip bırak." & return & return & "Excel dosyası PDF'in yanına kaydedilir ve açılır." buttons {"Tamam"} default button 1 with title "Ekstre Çevir" with icon note
 end run
 
 on open birakilanlar

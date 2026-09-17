@@ -1,5 +1,5 @@
 #!/bin/bash
-# Ekstre Çevir çalıştırıcı — "Ekstre Çevir.app" bunu çağırır, elle de kullanılabilir:
+# Ekstre Çevir çalıştırıcı (ekstre ya da tablolu PDF) — "Ekstre Çevir.app" bunu çağırır, elle de kullanılabilir:
 #   ./calistir.sh ekstre.pdf
 # İlk çalıştırmada klasörün içine .venv kurar (bir kez, internet gerekir).
 # SON SATIR her zaman üretilen .xlsx dosyasının yoludur.
@@ -17,7 +17,7 @@ if [ ! -x "$KLASOR/.venv/bin/python" ]; then
   "$KLASOR/.venv/bin/python" -m pip install -q --disable-pip-version-check -r "$KLASOR/requirements.txt" >&2
 fi
 
-"$KLASOR/.venv/bin/python" "$KLASOR/ekstre_cevir.py" "$PDF" >&2
-XLSX="${PDF%.*}_ekstre.xlsx"
-[ -f "$XLSX" ] || { echo "Excel dosyası üretilemedi" >&2; exit 1; }
+# --yol: insan mesajları stderr'e, üretilen dosyanın yolu stdout'a (ekstre ya da tablo)
+XLSX="$("$KLASOR/.venv/bin/python" "$KLASOR/ekstre_cevir.py" --yol "$PDF")"
+[ -n "$XLSX" ] && [ -f "$XLSX" ] || { echo "Excel dosyası üretilemedi" >&2; exit 1; }
 echo "$XLSX"
