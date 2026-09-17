@@ -153,8 +153,17 @@ def excele_yaz(hareketler: list[Hareket], hedef: Path) -> None:
     wb.save(hedef)
 
 
+class EkstreBulunamadi(Exception):
+    """PDF'te tarihle başlayan hareket satırı yok — muhtemelen ekstre değil."""
+
+
 def cevir(yol: Path) -> tuple[Path, int, int]:
     hareketler = pdf_oku(yol)
+    if not hareketler:
+        # Boş Excel üretip "başarılı" demek, kullanıcıya bozuk program gibi görünür.
+        raise EkstreBulunamadi(
+            "Bu PDF'te ekstre satırı bulunamadı (tarihle başlayan hareket yok). "
+            "Taranmış bir PDF ya da banka ekstresi olmayan bir belge olabilir.")
     isaretleri_duzelt(hareketler)
     hedef = yol.with_name(yol.stem + "_ekstre.xlsx")
     excele_yaz(hareketler, hedef)
@@ -166,17 +175,24 @@ def main(argv: list[str]) -> int:
     if len(argv) < 2:
         print(__doc__)
         return 1
+    hata = False
     for arg in argv[1:]:
         yol = Path(arg)
         if not yol.exists():
-            print(f"✗ bulunamadı: {yol}")
+            print(f"✗ bulunamadı: {yol}", file=sys.stderr)
+            hata = True
             continue
-        hedef, adet, sorunlu = cevir(yol)
+        try:
+            hedef, adet, sorunlu = cevir(yol)
+        except EkstreBulunamadi as h:
+            print(f"✗ {yol.name}: {h}", file=sys.stderr)
+            hata = True
+            continue
         durum = f"{adet} hareket"
         if sorunlu:
             durum += f", {sorunlu} satır kontrol gerektiriyor"
         print(f"✓ {hedef.name}  ({durum})")
-    return 0
+    return 1 if hata else 0
 
 
 if __name__ == "__main__":

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <rect x="64" y="64" width="896" height="896" rx="200" fill="#0E1A27"/>
+  <text x="512" y="360" text-anchor="middle" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif"
+        font-weight="800" font-size="230" fill="#F2F5F8">PDF</text>
+  <path d="M512 415 L512 600" stroke="#FFB020" stroke-width="64" stroke-linecap="round"/>
+  <path d="M400 520 L512 632 L624 520" fill="none" stroke="#FFB020" stroke-width="64" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="512" y="870" text-anchor="middle" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif"
+        font-weight="800" font-size="230" fill="#FFB020">XLS</text>
+</svg>

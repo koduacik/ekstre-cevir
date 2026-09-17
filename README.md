@@ -9,6 +9,18 @@ PDF banka ekstresini Excel'e çeviren tek dosyalık program. Kurulum yok, ücret
 
 En güncel sürüm: [Releases](../../releases/latest)
 
+## Nasıl kullanılır
+
+**macOS:** PDF ekstreni **`Ekstre Çevir`** simgesinin üzerine sürükleyip bırak. Excel dosyası
+PDF'in yanına `<ad>_ekstre.xlsx` olarak kaydedilir ve açılır.
+
+**Windows:** PDF ekstreni **`Ekstre Cevir.bat`** dosyasının üzerine sürükleyip bırak.
+
+İlk açılışta gerekli bileşenler bir kez kurulur (internet gerekir, ~15 sn). Sonraki açılışlar
+bir saniyeden kısa sürer. Bilgisayarında Python 3.9 veya üstü olmalı.
+
+**Komut satırı:** `./calistir.sh ekstre.pdf` ya da `python ekstre_cevir.py ekstre.pdf`
+
 ## Ne yapar
 
 - PDF ekstreden `tarih / açıklama / tutar / bakiye` kolonlarını çıkarır, `.xlsx` verir
