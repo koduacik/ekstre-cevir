@@ -3,7 +3,7 @@
 PDF banka ekstresini Excel'e çeviren tek dosyalık program. Kurulum yok, ücretsiz, dosyanız bilgisayarınızdan çıkmıyor.
 
 > Bu araç **Bunun Programı Var** kanalının 1. bölümünde sıfırdan yazıldı.
-> Video: <video-linki>  ·  Kanal: https://youtube.com/@programivar
+> Program sayfası: https://ozy2.com/programivar/ekstre-cevir/  ·  Kanal: https://youtube.com/@programivar
 
 ## İndir
 
