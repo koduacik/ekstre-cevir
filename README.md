@@ -1,5 +1,7 @@
 # Ekstre Çevir
 
+![PDF ekstreyi simgeye bırak, Excel açılsın](docs/demo.gif)
+
 PDF banka ekstresini Excel'e çeviren tek dosyalık program. Kurulum yok, ücretsiz, dosyanız bilgisayarınızdan çıkmıyor.
 
 > Bu araç **Bunun Programı Var** kanalının 1. bölümünde sıfırdan yazıldı.
