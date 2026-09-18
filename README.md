@@ -22,6 +22,7 @@ PDF'in yanına kaydedilir ve açılır.
 bir saniyeden kısa sürer. Bilgisayarında Python 3.9 veya üstü olmalı.
 
 **Komut satırı:** `./calistir.sh ekstre.pdf` ya da `python ekstre_cevir.py ekstre.pdf`
+Yalnız üretilen dosyanın yolunu yazdırmak için: `python ekstre_cevir.py --yol ekstre.pdf`
 
 ## Ne yapar
 
@@ -44,13 +45,34 @@ bir satış raporu ekstre sanılmaz.
 - Taranmış (fotoğraf) PDF okumaz — PDF'in içinde seçilebilir yazı olmalı
 - Tablolarda doğrulama yapmaz; özellikle **kenarlıksız** tablolarda kolonları gözle kontrol et
 - Birleştirilmiş (birden çok kolona yayılan) hücreleri tek kolona koyar
-- Ekstre okuyucu 3 farklı ekstre düzeninde test edildi; başka bir bankanın düzeninde `Kontrol` kolonuna bak
+- Ekstre okuyucu 5 kurgu ekstre düzeninde test edildi; başka bir bankanın düzeninde `Kontrol` kolonuna bak
+
+## İndirdikten sonra ilk açılış (macOS)
+
+İnternetten indirilen uygulamaları macOS karantinaya alır. `Ekstre Çevir` ilk açılışta
+uyarı verirse: **Sistem Ayarları → Gizlilik ve Güvenlik**'i aç, en altta çıkan
+"Ekstre Çevir yine de açılsın" düğmesine bas. Bir kez yeterlidir.
+
+Tercih edersen uygulamayı kendi bilgisayarında yeniden üretebilirsin — karantina olmaz:
+
+```bash
+mac/uygulamayi_olustur.sh
+```
 
 ## Testler
 
 ```bash
-python test/dogrula.py        # 3 ekstre düzeni, satır satır
-python test/tablo_dogrula.py  # 5 tablo belgesi, hücre hücre
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements-test.txt
+.venv/bin/python -m unittest discover -s tests -v
+```
+
+Testler her çalışmada sahte ekstreleri ve tablo belgelerini reportlab ile yeniden üretir,
+programı komut satırından çalıştırır ve Excel çıktısını beklenen değerlerle **hücre hücre**
+karşılaştırır. Örnek belgeleri kendin incelemek için:
+
+```bash
+.venv/bin/python tests/ornek_uret.py   # → tests/ornekler/
 ```
 
 ## Gizlilik
